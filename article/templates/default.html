@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+ <head>
+
+ <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>搜索</title>
+
+
+<link href="../../static/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../../static/css/base.css" />
+<link rel="stylesheet" type="text/css" href="../../static/css/forms.css" />
+
+  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+
+  <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+
+  </head>
+
+  <body>
+  <div id="header">
+          <div id="branding">
+
+  <h1 id="site-name"><a href="/">返回首页</a></h1>
+
+          </div>
+
+         {% if request.user.is_authenticated %}
+          <div id="user-tools">
+                  
+               
+                  <font color="#FFFFFF">欢迎{{user}}!</font> /
+                  <font color="#FFFFFF">分数：{{user.userprofile.point}}</font> /
+                  <a href="/login/changepassword/{{user}}">修改密码</a> /
+                  <a href="/login/logout/">注销</a>
+
+          </div>
+{% else %}
+          <div id="user-tools">
+                  <a href="/login/register/">注册</a> /
+                  <a href="/login/login/">登录</a>
+          </div>
+{% endif %}
+</div>
+<div class="container">
+  <div class="row">
+    <br>
+      <form class="navbar-form navbar-left" role="search" method="post" action="/article/result/">
+        <div class="form-group">
+          <input type="text" size="45" placeholder="Search" name="title" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm">搜索词条</button>
+      </form>
+  </div>
+
+  <div class="row">
+      <br>
+      <br>
+        <div class="no-result">抱歉，没有找到与该词条相关的百科结果。</div>
+        <br>
+        <br>
+
+            <div class="create-entrance">
+        <p>互动百科尚未收录该词条</p>
+        <br>
+        <p>欢迎您来创建，与广大网友分享关于该词条的信息。
+            <!--a href="编辑8.html"  class="btn btn-primary btn-sm">我来创建</a-->
+            <a href="/article/new/" target="_blank" class="cmn-btn cmn-btn-25">我来创建</a>
+            </p>
+      </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+  <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+  <script src="../../static/js/bootstrap.min.js"></script>
+
+
+  </body>
+ </html>

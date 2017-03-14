@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+ <head>
+
+ <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link href="../../static/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../../static/css/base.css" />
+
+  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+
+  <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+
+  </head>
+
+  <body>
+  <div id="header">
+          <div id="branding">
+
+  <h1 id="site-name"><a href="/">返回首页</a></h1>
+
+          </div>
+
+         {% if request.user.is_authenticated %}
+          <div id="user-tools">
+                  
+               
+                  <font color="#FFFFFF">欢迎{{user}}!</font> /
+                  <font color="#FFFFFF">分数：{{user.userprofile.point}}</font> /
+                  <a href="/login/changepassword/{{user}}">修改密码</a> /
+                  <a href="/login/logout/">注销</a>
+
+          </div>
+{% else %}
+          <div id="user-tools">
+                  <a href="/login/register/">注册</a> /
+                  <a href="/login/login/">登录</a>
+          </div>
+{% endif %}
+</div>
+<div class="container">
+  <p style="position:absolute; top:30%; left:0; text-align:center; width:100%;">
+    <span style="font-size:25px">词条不存在，可创建词条或返回首页
+    <br><br><br>
+    <a href="/article/new/">创建词条</a>&nbsp;&nbsp;&nbsp;
+    <a href="/">返回首页</a>
+  </span>
+
+  </p>
+</div>
+
+
+
+
+
+
+  <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+  <script src="../../static/js/bootstrap.min.js"></script>
+
+
+  </body>
+ </html>
